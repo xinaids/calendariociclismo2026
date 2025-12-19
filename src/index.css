@@ -169,3 +169,23 @@ li em {
   box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
 }
 
+
+/* Busca de prova */
+.filters input[type="text"] {
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: #e5e7eb;
+  padding: 8px 10px;
+  min-width: 220px;
+  outline: none;
+  font-size: 14px;
+}
+
+.filters input[type="text"]::placeholder {
+  color: #64748b;
+}
+
+.filters input[type="text"]:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+}
