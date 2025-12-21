@@ -5,6 +5,11 @@ export default function App() {
     <main>
       <h1>Ciclismo – Temporada 2026</h1>
       <Calendar />
+
+      <footer className="footer">
+        Desenvolvido por Mateus M. Schneider
+      </footer>
     </main>
+    
   );
 }

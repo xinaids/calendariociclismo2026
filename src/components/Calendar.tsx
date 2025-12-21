@@ -4,7 +4,7 @@ import type { Prova, Modalidade, Campeonato } from "../data/provas2026";
 import { Modal } from "./Modal";
 
 /**
- * Cria data no fuso local (SEM bug de timezone)
+ * Data local sem bug de timezone
  */
 function parseLocalDate(dateStr: string): Date {
   const [y, m, d] = dateStr.split("-").map(Number);
@@ -16,25 +16,37 @@ const meses = [
   "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
 ];
 
+const CAMPEONATOS: Campeonato[] = [
+  "Campeonato Gaúcho",
+  "Campeonato Noroeste",
+  "Circuito Tchê",
+  "Circuito Planalto Médio",
+  "CBC Brasileiro",
+  "Circuito Avulso",
+];
+
 export function Calendar() {
   const [mesAtual, setMesAtual] = useState(0);
   const [selecionadas, setSelecionadas] = useState<Prova[] | null>(null);
-  const [modalidade, setModalidade] = useState<Modalidade | "todas">("todas");
-  const [campeonato, setCampeonato] = useState<Campeonato | "todos">("todos");
+
+  const [modalidade, setModalidade] =
+    useState<Modalidade | "todas">("todas");
+
   const [busca, setBusca] = useState("");
+
+  const [campeonatosSelecionados, setCampeonatosSelecionados] =
+    useState<Campeonato[]>([]);
+
+  const [menuAberto, setMenuAberto] = useState(false);
 
   const ano = 2026;
 
-  // segunda-feira como primeiro dia (ISO)
   const primeiroDia =
     (new Date(ano, mesAtual, 1).getDay() + 6) % 7;
 
   const diasNoMes =
     new Date(ano, mesAtual + 1, 0).getDate();
 
-  /**
-   * FILTROS (usando parseLocalDate)
-   */
   const provasFiltradas = provas2026.filter((p: Prova) => {
     const data = parseLocalDate(p.data);
 
@@ -44,7 +56,8 @@ export function Calendar() {
       modalidade === "todas" || p.modalidade === modalidade;
 
     const okCampeonato =
-      campeonato === "todos" || p.campeonato === campeonato;
+      campeonatosSelecionados.length === 0 ||
+      campeonatosSelecionados.includes(p.campeonato);
 
     const okBusca =
       p.nome.toLowerCase().includes(busca.toLowerCase());
@@ -52,12 +65,9 @@ export function Calendar() {
     return mesmoMes && okModalidade && okCampeonato && okBusca;
   });
 
-  /**
-   * Provas do dia (SEM bug de fuso)
-   */
   const getProvasDoDia = (dia: number): Prova[] =>
     provasFiltradas.filter(
-      (p: Prova) => parseLocalDate(p.data).getDate() === dia
+      (p) => parseLocalDate(p.data).getDate() === dia
     );
 
   return (
@@ -80,19 +90,52 @@ export function Calendar() {
           <option value="mtb">MTB</option>
         </select>
 
-        <select
-          value={campeonato}
-          onChange={(e) => setCampeonato(e.target.value as any)}
-        >
-          <option value="todos">Todos circuitos</option>
-          <option value="Campeonato Gaúcho">Campeonato Gaúcho</option>
-          <option value="Campeonato Noroeste">Campeonato Noroeste</option>
-          <option value="Circuito Tchê">Circuito Tchê</option>
-          <option value="Circuito Planalto Médio">
-            Circuito Planalto Médio
-          </option>
-        </select>
+        <button className="filter-button" onClick={() => setMenuAberto(true)}>
+          Filtrar campeonatos ☰
+        </button>
       </div>
+
+      {/* MODAL DE CAMPEONATOS */}
+      {menuAberto && (
+        <div className="filter-modal-backdrop">
+          <div className="filter-modal">
+            <h3>Selecionar Campeonatos</h3>
+
+            {CAMPEONATOS.map((c) => (
+              <label key={c} className="filter-option">
+                <input
+                  type="checkbox"
+                  checked={campeonatosSelecionados.includes(c)}
+                  onChange={() =>
+                    setCampeonatosSelecionados((prev) =>
+                      prev.includes(c)
+                        ? prev.filter((x) => x !== c)
+                        : [...prev, c]
+                    )
+                  }
+                />
+                {c}
+              </label>
+            ))}
+
+            <div className="filter-actions">
+              <button
+                onClick={() => setCampeonatosSelecionados([])}
+                className="secondary"
+              >
+                Limpar
+              </button>
+
+              <button
+                onClick={() => setMenuAberto(false)}
+                className="primary"
+              >
+                Aplicar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* CABEÇALHO */}
       <header className="calendar-header">
@@ -101,7 +144,7 @@ export function Calendar() {
         <button onClick={() => setMesAtual(m => Math.min(11, m + 1))}>▶</button>
       </header>
 
-      {/* GRID */}
+      {/* CALENDÁRIO */}
       <div className="calendar-grid">
         {["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"].map((d) => (
           <div key={d} className="day-name">{d}</div>
@@ -110,34 +153,25 @@ export function Calendar() {
         {Array.from({ length: diasNoMes }).map((_, i) => {
           const dia = i + 1;
           const provas = getProvasDoDia(dia);
+          const temCBC = provas.some(p => p.campeonato === "CBC Brasileiro");
 
           return (
             <div
               key={dia}
-              className={`day ${provas.length ? "has-event" : ""}`}
+              className={`day ${provas.length ? "has-event" : ""} ${temCBC ? "cbc-event" : ""}`}
               style={dia === 1 ? { gridColumnStart: primeiroDia + 1 } : {}}
               onClick={() => provas.length && setSelecionadas(provas)}
             >
               <span>{dia}</span>
-
-              {provas.length === 1 && (
-                <small>{provas[0].nome}</small>
-              )}
-
-              {provas.length > 1 && (
-                <small>+{provas.length} provas</small>
-              )}
+              {provas.length === 1 && <small>{provas[0].nome}</small>}
+              {provas.length > 1 && <small>+{provas.length} provas</small>}
             </div>
           );
         })}
       </div>
 
-      {/* MODAL */}
       {selecionadas && (
-        <Modal
-          provas={selecionadas}
-          onClose={() => setSelecionadas(null)}
-        />
+        <Modal provas={selecionadas} onClose={() => setSelecionadas(null)} />
       )}
     </>
   );

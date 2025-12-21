@@ -189,3 +189,104 @@ li em {
   border-color: #38bdf8;
   box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
 }
+
+/* Destaque – CBC Brasileiro */
+.day.cbc-event {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.6);
+}
+
+.day.cbc-event small {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.cbc-filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.cbc-filter input {
+  accent-color: #22c55e;
+}
+
+.championships {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.championship-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+.championship-option input {
+  accent-color: #38bdf8;
+}
+.filter-button {
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: #e5e7eb;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.filter-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.filter-modal {
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 20px;
+  width: 320px;
+}
+
+.filter-option {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0;
+  color: #e5e7eb;
+}
+
+.filter-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.filter-actions .primary {
+  background: #38bdf8;
+  color: #020617;
+  padding: 6px 12px;
+}
+
+.filter-actions .secondary {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #e5e7eb;
+  padding: 6px 12px;
+}
+
+.footer {
+  margin-top: 40px;
+  padding: 16px 0;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+  border-top: 1px solid #1e293b;
+}
+
