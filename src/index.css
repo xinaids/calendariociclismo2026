@@ -24,32 +24,9 @@ h2 {
   color: #7dd3fc;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  display: grid;
-  grid-template-columns: 120px 1fr 120px;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid #1e293b;
-}
-
-li span {
-  font-family: monospace;
-}
-
-li strong {
-  font-weight: 600;
-}
-
-li em {
-  text-align: right;
-  font-style: normal;
-  color: #94a3b8;
-}
+/* ================================
+   CALENDÁRIO
+================================ */
 
 .calendar-header {
   display: flex;
@@ -80,50 +57,32 @@ li em {
 }
 
 .day {
+  position: relative;
   background: #020617;
-  border: 1px solid #1e293b;
-  min-height: 80px;
+  border: 2px solid #1e293b;
+  min-height: 90px;
   padding: 6px;
-  cursor: default;
 }
 
 .day.has-event {
-  border-color: #38bdf8;
   cursor: pointer;
+}
+
+.day span {
+  font-size: 13px;
+  font-weight: 600;
+  display: block;
 }
 
 .day small {
   display: block;
   font-size: 11px;
-  color: #7dd3fc;
   margin-top: 4px;
 }
 
-/* MODAL */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(2, 6, 23, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal {
-  background: #020617;
-  border: 1px solid #1e293b;
-  padding: 20px;
-  max-width: 400px;
-}
-
-.modal button {
-  margin-top: 15px;
-  background: #38bdf8;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
+/* ================================
+   FILTROS
+================================ */
 
 .filters {
   display: flex;
@@ -131,14 +90,49 @@ li em {
   margin-top: 20px;
 }
 
-.filters select {
+.filters input[type="text"],
+.filters select,
+.filter-button {
   background: #020617;
   border: 1px solid #1e293b;
   color: #e5e7eb;
-  padding: 6px 8px;
-  height: 36px
+  padding: 8px 10px;
+  height: 36px;
+  font-size: 14px;
 }
 
+.filters input::placeholder {
+  color: #64748b;
+}
+
+.filters input:focus,
+.filters select:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+/* ================================
+   MODAL
+================================ */
+
+.modal-backdrop,
+.filter-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal,
+.filter-modal {
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 20px;
+  width: 320px;
+}
 
 .modal-item {
   border-bottom: 1px solid #1e293b;
@@ -149,117 +143,10 @@ li em {
   border-bottom: none;
 }
 
-/* Busca de prova */
-.filters input[type="text"] {
-  background: #020617;
-  border: 1px solid #1e293b;
-  color: #e5e7eb;
-  padding: 8px 10px;
-  min-width: 220px;
-  outline: none;
-  font-size: 14px;
-}
-
-.filters input[type="text"]::placeholder {
-  color: #64748b;
-}
-
-.filters input[type="text"]:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
-}
-
-
-/* Busca de prova */
-.filters input[type="text"] {
-  background: #020617;
-  border: 1px solid #1e293b;
-  color: #e5e7eb;
-  padding: 8px 10px;
-  min-width: 220px;
-  outline: none;
-  font-size: 14px;
-}
-
-.filters input[type="text"]::placeholder {
-  color: #64748b;
-}
-
-.filters input[type="text"]:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
-}
-
-/* Destaque – CBC Brasileiro */
-.day.cbc-event {
-  border-color: #22c55e;
-  box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.6);
-}
-
-.day.cbc-event small {
-  color: #22c55e;
-  font-weight: 600;
-}
-
-.cbc-filter {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: #e5e7eb;
-  font-size: 14px;
-}
-
-.cbc-filter input {
-  accent-color: #22c55e;
-}
-
-.championships {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.championship-option {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  color: #e5e7eb;
-}
-
-.championship-option input {
-  accent-color: #38bdf8;
-}
-.filter-button {
-  background: #020617;
-  border: 1px solid #1e293b;
-  color: #e5e7eb;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.filter-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.filter-modal {
-  background: #020617;
-  border: 1px solid #1e293b;
-  padding: 20px;
-  width: 320px;
-}
-
 .filter-option {
   display: flex;
   gap: 8px;
   margin: 8px 0;
-  color: #e5e7eb;
 }
 
 .filter-actions {
@@ -271,6 +158,7 @@ li em {
 .filter-actions .primary {
   background: #38bdf8;
   color: #020617;
+  border: none;
   padding: 6px 12px;
 }
 
@@ -281,6 +169,86 @@ li em {
   padding: 6px 12px;
 }
 
+/* ================================
+   CORES POR CAMPEONATO (BORDA)
+================================ */
+
+.day.gaucho {
+  border-color: #ef4444;
+}
+.day.gaucho small {
+  color: #ef4444;
+}
+
+.day.noroeste {
+  border-color: #3b82f6;
+}
+.day.noroeste small {
+  color: #3b82f6;
+}
+
+.day.tche {
+  border-color: #8b5cf6;
+}
+.day.tche small {
+  color: #8b5cf6;
+}
+
+.day.planalto {
+  border-color: #f97316;
+}
+.day.planalto small {
+  color: #f97316;
+}
+
+.day.cbc {
+  border-color: #22c55e;
+}
+.day.cbc small {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.day.avulso {
+  border-color: #eab308;
+}
+.day.avulso small {
+  color: #eab308;
+}
+
+/* ================================
+   MÚLTIPLOS CAMPEONATOS NO MESMO DIA
+   → BORDA COM GRADIENTE
+================================ */
+
+.day.gaucho.noroeste {
+  border-image: linear-gradient(90deg, #ef4444, #3b82f6) 1;
+}
+
+.day.gaucho.tche {
+  border-image: linear-gradient(90deg, #ef4444, #8b5cf6) 1;
+}
+
+.day.gaucho.planalto {
+  border-image: linear-gradient(90deg, #ef4444, #f97316) 1;
+}
+
+.day.noroeste.tche {
+  border-image: linear-gradient(90deg, #3b82f6, #8b5cf6) 1;
+}
+
+.day.cbc.gaucho {
+  border-image: linear-gradient(90deg, #22c55e, #ef4444) 1;
+}
+
+.day.cbc.planalto {
+  border-image: linear-gradient(90deg, #22c55e, #f97316) 1;
+}
+
+/* ================================
+   RODAPÉ
+================================ */
+
 .footer {
   margin-top: 40px;
   padding: 16px 0;
@@ -290,3 +258,13 @@ li em {
   border-top: 1px solid #1e293b;
 }
 
+
+.modal a {
+  color: #38bdf8;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.modal a:hover {
+  color: #7dd3fc;
+}

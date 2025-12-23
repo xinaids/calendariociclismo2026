@@ -11,6 +11,28 @@ function parseLocalDate(dateStr: string): Date {
   return new Date(y, m - 1, d);
 }
 
+/**
+ * Classe CSS por campeonato
+ */
+function getClasseCampeonato(c: Campeonato): string {
+  switch (c) {
+    case "Campeonato Gaúcho":
+      return "gaucho";
+    case "Campeonato Noroeste":
+      return "noroeste";
+    case "Circuito Tchê":
+      return "tche";
+    case "Circuito Planalto Médio":
+      return "planalto";
+    case "CBC Brasileiro":
+      return "cbc";
+    case "Circuito Avulso":
+      return "avulso";
+    default:
+      return "";
+  }
+}
+
 const meses = [
   "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
   "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
@@ -28,44 +50,34 @@ const CAMPEONATOS: Campeonato[] = [
 export function Calendar() {
   const [mesAtual, setMesAtual] = useState(0);
   const [selecionadas, setSelecionadas] = useState<Prova[] | null>(null);
-
-  const [modalidade, setModalidade] =
-    useState<Modalidade | "todas">("todas");
-
+  const [modalidade, setModalidade] = useState<Modalidade | "todas">("todas");
   const [busca, setBusca] = useState("");
-
   const [campeonatosSelecionados, setCampeonatosSelecionados] =
     useState<Campeonato[]>([]);
-
   const [menuAberto, setMenuAberto] = useState(false);
 
   const ano = 2026;
 
+  // Segunda-feira como primeiro dia
   const primeiroDia =
     (new Date(ano, mesAtual, 1).getDay() + 6) % 7;
 
   const diasNoMes =
     new Date(ano, mesAtual + 1, 0).getDate();
 
-  const provasFiltradas = provas2026.filter((p: Prova) => {
+  const provasFiltradas = provas2026.filter((p) => {
     const data = parseLocalDate(p.data);
 
-    const mesmoMes = data.getMonth() === mesAtual;
-
-    const okModalidade =
-      modalidade === "todas" || p.modalidade === modalidade;
-
-    const okCampeonato =
-      campeonatosSelecionados.length === 0 ||
-      campeonatosSelecionados.includes(p.campeonato);
-
-    const okBusca =
-      p.nome.toLowerCase().includes(busca.toLowerCase());
-
-    return mesmoMes && okModalidade && okCampeonato && okBusca;
+    return (
+      data.getMonth() === mesAtual &&
+      (modalidade === "todas" || p.modalidade === modalidade) &&
+      (campeonatosSelecionados.length === 0 ||
+        campeonatosSelecionados.includes(p.campeonato)) &&
+      p.nome.toLowerCase().includes(busca.toLowerCase())
+    );
   });
 
-  const getProvasDoDia = (dia: number): Prova[] =>
+  const getProvasDoDia = (dia: number) =>
     provasFiltradas.filter(
       (p) => parseLocalDate(p.data).getDate() === dia
     );
@@ -125,7 +137,6 @@ export function Calendar() {
               >
                 Limpar
               </button>
-
               <button
                 onClick={() => setMenuAberto(false)}
                 className="primary"
@@ -153,18 +164,28 @@ export function Calendar() {
         {Array.from({ length: diasNoMes }).map((_, i) => {
           const dia = i + 1;
           const provas = getProvasDoDia(dia);
-          const temCBC = provas.some(p => p.campeonato === "CBC Brasileiro");
+
+          const classesCampeonatos = [
+            ...new Set(provas.map(p => getClasseCampeonato(p.campeonato)))
+          ].join(" ");
 
           return (
             <div
               key={dia}
-              className={`day ${provas.length ? "has-event" : ""} ${temCBC ? "cbc-event" : ""}`}
+              className={`day ${provas.length ? "has-event" : ""} ${classesCampeonatos}`}
+              data-count={provas.length}
               style={dia === 1 ? { gridColumnStart: primeiroDia + 1 } : {}}
               onClick={() => provas.length && setSelecionadas(provas)}
             >
               <span>{dia}</span>
-              {provas.length === 1 && <small>{provas[0].nome}</small>}
-              {provas.length > 1 && <small>+{provas.length} provas</small>}
+
+              {provas.length === 1 && (
+                <small>{provas[0].nome}</small>
+              )}
+
+              {provas.length > 1 && (
+                <small>+{provas.length} provas</small>
+              )}
             </div>
           );
         })}

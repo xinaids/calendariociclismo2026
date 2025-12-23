@@ -155,7 +155,7 @@ export const provas2026: Prova[] = [
   // MTB — CIRCUITO PLANALTO MÉDIO
   // =====================================================
 
-  { nome: "Paraí", data: "2026-01-25", pais: "Brasil", descricao: "Etapa Paraí – Circuito Planalto Médio MTB.", modalidade: "mtb", campeonato: "Circuito Planalto Médio" },
+  { nome: "Paraí", data: "2026-01-25", pais: "Brasil", descricao: "Etapa Paraí – Circuito Planalto Médio MTB. Inscrição: https://windfit.app/events/pedalparai ", modalidade: "mtb", campeonato: "Circuito Planalto Médio" },
   { nome: "Carazinho", data: "2026-02-08", pais: "Brasil", descricao: "Etapa Carazinho – Circuito Planalto Médio MTB.", modalidade: "mtb", campeonato: "Circuito Planalto Médio" },
   { nome: "Marau", data: "2026-03-22", pais: "Brasil", descricao: "Etapa Marau – Circuito Planalto Médio MTB.", modalidade: "mtb", campeonato: "Circuito Planalto Médio" },
   { nome: "Sananduva", data: "2026-08-30", pais: "Brasil", descricao: "Etapa Sananduva – Circuito Planalto Médio MTB.", modalidade: "mtb", campeonato: "Circuito Planalto Médio" },

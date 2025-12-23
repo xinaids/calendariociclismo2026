@@ -14,7 +14,15 @@ export function Modal({ provas, onClose }: Props) {
         {provas.map((p) => (
           <div key={p.nome} className="modal-item">
             <strong>{p.nome}</strong>
-            <p>{p.descricao}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: p.descricao.replace(
+                  /(https?:\/\/[^\s]+)/g,
+                  '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
+                )
+              }}
+            />
+
             <p>
               {p.modalidade.toUpperCase()} — {p.campeonato}
             </p>
