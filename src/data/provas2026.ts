@@ -13,6 +13,7 @@ export type Campeonato =
   | "CBC Brasileiro";
 
 
+
 export type Prova = {
   nome: string;
   data: string; // YYYY-MM-DD
@@ -353,6 +354,16 @@ export const provas2026: Prova[] = [
     modalidade: "estrada",
     campeonato: "CBC Brasileiro",
   },
+
+  // Campeonato Noroeste MTB
+
+  { nome: "Entre Ijuís", data: "2026-02-22", pais: "Brasil", descricao: "XCO", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
+  { nome: "Entre Ijuís", data: "2026-03-22", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
+  { nome: "Entre Ijuís", data: "2026-04-26", pais: "Brasil", descricao: "XCO", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
+  { nome: "Local a Definir", data: "2026-05-31", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
+
+
+
 
 
   // =====================================================
