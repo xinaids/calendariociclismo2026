@@ -12,8 +12,10 @@ export function Modal({ provas, onClose }: Props) {
         <h3>Provas do dia</h3>
 
         {provas.map((p) => (
-          <div key={p.nome} className="modal-item">
+          <div key={`${p.nome}-${p.data}`} className="modal-item">
             <strong>{p.nome}</strong>
+
+            {/* Descrição (mantida exatamente como estava) */}
             <p
               dangerouslySetInnerHTML={{
                 __html: p.descricao.replace(
@@ -26,6 +28,21 @@ export function Modal({ provas, onClose }: Props) {
             <p>
               {p.modalidade.toUpperCase()} — {p.campeonato}
             </p>
+
+            {/* 🔗 LINK DE INSCRIÇÃO (NOVO, SEM QUEBRAR O ANTIGO) */}
+            {p.link && (
+              <p>
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Inscrição"
+                  className="modal-inscricao"
+                >
+                  🔗 Inscrição
+                </a>
+              </p>
+            )}
           </div>
         ))}
 

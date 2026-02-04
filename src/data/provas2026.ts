@@ -21,6 +21,7 @@ export type Prova = {
   descricao: string;
   modalidade: Modalidade;
   campeonato: Campeonato;
+  link?: string; // 👈 NOVO CAMPO (opcional)
 };
 
 // =====================
@@ -145,7 +146,7 @@ export const provas2026: Prova[] = [
   // MTB — CIRCUITO TCHÊ
   // =====================================================
 
-  { nome: "Horizontina", data: "2026-03-08", pais: "Brasil", descricao: "Etapa Horizontina – Circuito Tchê MTB.", modalidade: "mtb", campeonato: "Circuito Tchê" },
+  { nome: "Horizontina", data: "2026-03-08", pais: "Brasil", descricao: "Etapa Horizontina – Circuito Tchê MTB.", modalidade: "mtb", campeonato: "Circuito Tchê", link: "https://windfit.app/events/8339523221690"},
   { nome: "Santo Ângelo", data: "2026-04-19", pais: "Brasil", descricao: "Etapa Santo Ângelo – Circuito Tchê MTB.", modalidade: "mtb", campeonato: "Circuito Tchê" },
   { nome: "Três Passos", data: "2026-05-17", pais: "Brasil", descricao: "Etapa Três Passos – Circuito Tchê MTB.", modalidade: "mtb", campeonato: "Circuito Tchê" },
   { nome: "Cândido Godói", data: "2026-08-02", pais: "Brasil", descricao: "Etapa Cândido Godói – Circuito Tchê MTB.", modalidade: "mtb", campeonato: "Circuito Tchê" },
@@ -357,7 +358,7 @@ export const provas2026: Prova[] = [
 
   // Campeonato Noroeste MTB
 
-  { nome: "Entre Ijuís", data: "2026-02-22", pais: "Brasil", descricao: "XCO", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
+  { nome: "Entre Ijuís", data: "2026-02-22", pais: "Brasil", descricao: "XCO", modalidade: "mtb", campeonato: "Campeonato Noroeste", link: "https://windfit.app/events/campeonatonoroeste" },
   { nome: "Entre Ijuís", data: "2026-03-22", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
   { nome: "Entre Ijuís", data: "2026-04-26", pais: "Brasil", descricao: "XCO", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
   { nome: "Local a Definir", data: "2026-05-31", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },

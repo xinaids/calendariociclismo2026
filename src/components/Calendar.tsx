@@ -3,17 +3,15 @@ import { provas2026 } from "../data/provas2026";
 import type { Prova, Modalidade, Campeonato } from "../data/provas2026";
 import { Modal } from "./Modal";
 
-/**
- * Data local sem bug de timezone
- */
+/* =====================
+   UTILIDADES
+===================== */
+
 function parseLocalDate(dateStr: string): Date {
   const [y, m, d] = dateStr.split("-").map(Number);
   return new Date(y, m - 1, d);
 }
 
-/**
- * Classe CSS por campeonato
- */
 function getClasseCampeonato(c: Campeonato): string {
   switch (c) {
     case "Campeonato Gaúcho":
@@ -48,7 +46,7 @@ const CAMPEONATOS: Campeonato[] = [
 ];
 
 export function Calendar() {
-  const [mesAtual, setMesAtual] = useState(0);
+  const [mesAtual, setMesAtual] = useState(() => new Date().getMonth());
   const [selecionadas, setSelecionadas] = useState<Prova[] | null>(null);
   const [modalidade, setModalidade] = useState<Modalidade | "todas">("todas");
   const [busca, setBusca] = useState("");
@@ -58,7 +56,6 @@ export function Calendar() {
 
   const ano = 2026;
 
-  // Segunda-feira como primeiro dia
   const primeiroDia =
     (new Date(ano, mesAtual, 1).getDay() + 6) % 7;
 
@@ -67,7 +64,6 @@ export function Calendar() {
 
   const provasFiltradas = provas2026.filter((p) => {
     const data = parseLocalDate(p.data);
-
     return (
       data.getMonth() === mesAtual &&
       (modalidade === "todas" || p.modalidade === modalidade) &&
@@ -107,47 +103,6 @@ export function Calendar() {
         </button>
       </div>
 
-      {/* MODAL DE CAMPEONATOS */}
-      {menuAberto && (
-        <div className="filter-modal-backdrop">
-          <div className="filter-modal">
-            <h3>Selecionar Campeonatos</h3>
-
-            {CAMPEONATOS.map((c) => (
-              <label key={c} className="filter-option">
-                <input
-                  type="checkbox"
-                  checked={campeonatosSelecionados.includes(c)}
-                  onChange={() =>
-                    setCampeonatosSelecionados((prev) =>
-                      prev.includes(c)
-                        ? prev.filter((x) => x !== c)
-                        : [...prev, c]
-                    )
-                  }
-                />
-                {c}
-              </label>
-            ))}
-
-            <div className="filter-actions">
-              <button
-                onClick={() => setCampeonatosSelecionados([])}
-                className="secondary"
-              >
-                Limpar
-              </button>
-              <button
-                onClick={() => setMenuAberto(false)}
-                className="primary"
-              >
-                Aplicar
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* CABEÇALHO */}
       <header className="calendar-header">
         <button onClick={() => setMesAtual(m => Math.max(0, m - 1))}>◀</button>
@@ -178,17 +133,59 @@ export function Calendar() {
               onClick={() => provas.length && setSelecionadas(provas)}
             >
               <span>{dia}</span>
-
-              {provas.length === 1 && (
-                <small>{provas[0].nome}</small>
-              )}
-
-              {provas.length > 1 && (
-                <small>+{provas.length} provas</small>
-              )}
+              {provas.length === 1 && <small>{provas[0].nome}</small>}
+              {provas.length > 1 && <small>+{provas.length} provas</small>}
             </div>
           );
         })}
+      </div>
+
+      {/* LISTA DO MÊS (TABELA) */}
+      <div className="month-events">
+        <h3>Eventos de {meses[mesAtual]}</h3>
+
+        <table className="month-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Campeonato</th>
+              <th>Prova</th>
+              <th>Modalidade</th>
+              <th>Inscrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            {provasFiltradas
+              .sort((a, b) =>
+                parseLocalDate(a.data).getTime() -
+                parseLocalDate(b.data).getTime()
+              )
+              .map((p) => (
+                <tr key={`${p.data}-${p.nome}`}>
+                  <td>{parseLocalDate(p.data).toLocaleDateString("pt-BR")}</td>
+                  <td className={getClasseCampeonato(p.campeonato)}>
+                    {p.campeonato}
+                  </td>
+                  <td>{p.nome}</td>
+                  <td>{p.modalidade.toUpperCase()}</td>
+                  <td>
+                    {p.link ? (
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Inscrição"
+                      >
+                        🔗
+                      </a>
+                    ) : (
+                      "-"
+                    )}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
       </div>
 
       {selecionadas && (
