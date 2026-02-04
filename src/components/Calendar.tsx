@@ -14,24 +14,16 @@ function parseLocalDate(dateStr: string): Date {
 
 function getClasseCampeonato(c: Campeonato): string {
   switch (c) {
-    case "Campeonato Gaúcho":
-      return "gaucho";
-    case "Campeonato Noroeste":
-      return "noroeste";
-    case "Circuito Tchê":
-      return "tche";
-    case "Circuito Planalto Médio":
-      return "planalto";
-    case "CBC Brasileiro":
-      return "cbc";
-    case "Circuito Avulso":
-      return "avulso";
-    case "Circuito Centro Norte":
-       return "centronorte";
-    case "Campeonato Zona Sul":
-      return "zonasul";   
-    default:
-      return "";
+    case "Campeonato Gaúcho": return "gaucho";
+    case "Campeonato Noroeste": return "noroeste";
+    case "Circuito Tchê": return "tche";
+    case "Circuito Planalto Médio": return "planalto";
+    case "CBC Brasileiro": return "cbc";
+    case "Circuito Avulso": return "avulso";
+    case "Circuito Centro Norte": return "centronorte";
+    case "Campeonato Zona Sul": return "zonasul";
+    case "Copa RP": return "coparp";
+    default: return "";
   }
 }
 
@@ -48,6 +40,7 @@ const CAMPEONATOS: Campeonato[] = [
   "Circuito Centro Norte",
   "CBC Brasileiro",
   "Campeonato Zona Sul",
+  "Copa RP",
   "Circuito Avulso",
 ];
 
@@ -60,7 +53,6 @@ export function Calendar() {
   const [menuAberto, setMenuAberto] = useState(false);
 
   const ano = 2026;
-
   const primeiroDia = (new Date(ano, mesAtual, 1).getDay() + 6) % 7;
   const diasNoMes = new Date(ano, mesAtual + 1, 0).getDate();
 
@@ -69,20 +61,16 @@ export function Calendar() {
     return (
       data.getMonth() === mesAtual &&
       (modalidade === "todas" || p.modalidade === modalidade) &&
-      (campeonatosSelecionados.length === 0 ||
-        campeonatosSelecionados.includes(p.campeonato)) &&
+      (campeonatosSelecionados.length === 0 || campeonatosSelecionados.includes(p.campeonato)) &&
       p.nome.toLowerCase().includes(busca.toLowerCase())
     );
   });
 
   const getProvasDoDia = (dia: number) =>
-    provasFiltradas.filter(
-      (p) => parseLocalDate(p.data).getDate() === dia
-    );
+    provasFiltradas.filter((p) => parseLocalDate(p.data).getDate() === dia);
 
   return (
     <>
-      {/* FILTROS SUPERIORES */}
       <div className="filters">
         <input
           type="text"
@@ -90,29 +78,22 @@ export function Calendar() {
           value={busca}
           onChange={(e) => setBusca(e.target.value)}
         />
-
-        <select
-          value={modalidade}
-          onChange={(e) => setModalidade(e.target.value as any)}
-        >
+        <select value={modalidade} onChange={(e) => setModalidade(e.target.value as any)}>
           <option value="todas">Todas modalidades</option>
           <option value="estrada">Estrada</option>
           <option value="mtb">MTB</option>
         </select>
-
         <button className="filter-button" onClick={() => setMenuAberto(true)}>
           Filtrar campeonatos ☰
         </button>
       </div>
 
-      {/* CABEÇALHO DO MÊS */}
       <header className="calendar-header">
         <button onClick={() => setMesAtual(m => Math.max(0, m - 1))}>◀</button>
         <h2>{meses[mesAtual]} 2026</h2>
         <button onClick={() => setMesAtual(m => Math.min(11, m + 1))}>▶</button>
       </header>
 
-      {/* GRID DO CALENDÁRIO */}
       <div className="calendar-grid">
         {["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"].map((d) => (
           <div key={d} className="day-name">{d}</div>
@@ -121,7 +102,8 @@ export function Calendar() {
         {Array.from({ length: diasNoMes }).map((_, i) => {
           const dia = i + 1;
           const provas = getProvasDoDia(dia);
-
+          
+          // Importante: extrai as classes únicas para aplicar os gradientes CSS
           const classesCampeonatos = [
             ...new Set(provas.map(p => getClasseCampeonato(p.campeonato)))
           ].join(" ");
@@ -130,7 +112,6 @@ export function Calendar() {
             <div
               key={dia}
               className={`day ${provas.length ? "has-event" : ""} ${classesCampeonatos}`}
-              data-count={provas.length}
               style={dia === 1 ? { gridColumnStart: primeiroDia + 1 } : {}}
               onClick={() => provas.length && setSelecionadas(provas)}
             >
@@ -142,47 +123,29 @@ export function Calendar() {
         })}
       </div>
 
-      {/* TABELA DE EVENTOS DO MÊS */}
       <div className="month-events">
         <h3>Eventos de {meses[mesAtual]}</h3>
-
-        <table className="month-table">
+        <table className="month-table" style={{ width: "100%", borderCollapse: "collapse" }}>
           <thead>
-            <tr>
-              <th>Data</th>
-              <th>Campeonato</th>
-              <th>Prova</th>
-              <th>Modalidade</th>
-              <th>Inscrição</th>
+            <tr style={{ textAlign: "left", borderBottom: "1px solid #1e293b" }}>
+              <th style={{ padding: "8px" }}>Data</th>
+              <th style={{ padding: "8px" }}>Campeonato</th>
+              <th style={{ padding: "8px" }}>Prova</th>
+              <th style={{ padding: "8px" }}>Inscrição</th>
             </tr>
           </thead>
           <tbody>
             {provasFiltradas
-              .sort((a, b) =>
-                parseLocalDate(a.data).getTime() -
-                parseLocalDate(b.data).getTime()
-              )
+              .sort((a, b) => parseLocalDate(a.data).getTime() - parseLocalDate(b.data).getTime())
               .map((p) => (
-                <tr key={`${p.data}-${p.nome}`}>
-                  <td>{parseLocalDate(p.data).toLocaleDateString("pt-BR")}</td>
-                  <td className={getClasseCampeonato(p.campeonato)}>
+                <tr key={`${p.data}-${p.nome}`} style={{ borderBottom: "1px solid #1e293b" }}>
+                  <td style={{ padding: "8px" }}>{parseLocalDate(p.data).toLocaleDateString("pt-BR")}</td>
+                  <td className={getClasseCampeonato(p.campeonato)} style={{ padding: "8px" }}>
                     {p.campeonato}
                   </td>
-                  <td>{p.nome}</td>
-                  <td>{p.modalidade.toUpperCase()}</td>
-                  <td>
-                    {p.link ? (
-                      <a
-                        href={p.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title="Inscrição"
-                      >
-                        🔗
-                      </a>
-                    ) : (
-                      "-"
-                    )}
+                  <td style={{ padding: "8px" }}>{p.nome}</td>
+                  <td style={{ padding: "8px" }}>
+                    {p.link ? <a href={p.link} target="_blank" rel="noopener noreferrer">🔗</a> : "-"}
                   </td>
                 </tr>
               ))}
@@ -190,12 +153,8 @@ export function Calendar() {
         </table>
       </div>
 
-      {/* MODAL DE DETALHES DO DIA */}
-      {selecionadas && (
-        <Modal provas={selecionadas} onClose={() => setSelecionadas(null)} />
-      )}
+      {selecionadas && <Modal provas={selecionadas} onClose={() => setSelecionadas(null)} />}
 
-      {/* MODAL DE SELEÇÃO DE CAMPEONATOS */}
       {menuAberto && (
         <div className="filter-modal-backdrop" onClick={() => setMenuAberto(false)}>
           <div className="filter-modal" onClick={(e) => e.stopPropagation()}>
@@ -210,31 +169,17 @@ export function Calendar() {
                       if (e.target.checked) {
                         setCampeonatosSelecionados([...campeonatosSelecionados, camp]);
                       } else {
-                        setCampeonatosSelecionados(
-                          campeonatosSelecionados.filter((c) => c !== camp)
-                        );
+                        setCampeonatosSelecionados(campeonatosSelecionados.filter((c) => c !== camp));
                       }
                     }}
                   />
-                  <span className={getClasseCampeonato(camp)} style={{ fontWeight: 500 }}>
-                    {camp}
-                  </span>
+                  <span className={getClasseCampeonato(camp)}>{camp}</span>
                 </label>
               ))}
             </div>
-            <div className="filter-actions" style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
-              <button 
-                className="secondary" 
-                onClick={() => setCampeonatosSelecionados([])}
-              >
-                Limpar
-              </button>
-              <button 
-                className="primary" 
-                onClick={() => setMenuAberto(false)}
-              >
-                Fechar
-              </button>
+            <div className="filter-actions">
+              <button className="secondary" onClick={() => setCampeonatosSelecionados([])}>Limpar</button>
+              <button className="primary" onClick={() => setMenuAberto(false)}>Fechar</button>
             </div>
           </div>
         </div>

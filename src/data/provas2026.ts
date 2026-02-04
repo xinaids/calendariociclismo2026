@@ -12,7 +12,8 @@ export type Campeonato =
   | "Circuito Avulso"
   | "Circuito Centro Norte"
   | "CBC Brasileiro"
-  | "Campeonato Zona Sul"; // 👈 ADICIONE ESTA LINHA
+  | "Campeonato Zona Sul"
+  | "Copa RP";
 
 
 
@@ -74,7 +75,7 @@ export const provas2026: Prova[] = [
   // ESTRADA — CAMPEONATO NOROESTE
   // =====================================================
 
-  { nome: "Cruz Alta", data: "2026-03-01", pais: "Brasil", descricao: "Etapa Cruz Alta.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
+  { nome: "Cruz Alta", data: "2026-03-01", pais: "Brasil", descricao: "Etapa Cruz Alta.", modalidade: "estrada", campeonato: "Campeonato Noroeste", link: "https://forms.gle/3McoVTweYwD7iKpA6" },
   { nome: "Carazinho", data: "2026-03-29", pais: "Brasil", descricao: "Etapa Carazinho.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
   { nome: "Ijuí", data: "2026-05-03", pais: "Brasil", descricao: "Etapa Ijuí.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
   { nome: "Panambi", data: "2026-08-23", pais: "Brasil", descricao: "Etapa Panambi.", modalidade: "estrada", campeonato: "Campeonato Noroeste", },
@@ -146,7 +147,7 @@ export const provas2026: Prova[] = [
   { nome: "Entre Ijuís", data: "2026-02-22", pais: "Brasil", descricao: "XCO", modalidade: "mtb", campeonato: "Campeonato Noroeste", link: "https://windfit.app/events/campeonatonoroeste" },
   { nome: "Entre Ijuís", data: "2026-03-22", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
   { nome: "Entre Ijuís", data: "2026-04-26", pais: "Brasil", descricao: "XCO", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
-  { nome: "Local a Definir", data: "2026-05-31", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
+  { nome: "Eugênio de Castro", data: "2026-05-31", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
 
 
 // =====================================================
@@ -172,6 +173,46 @@ export const provas2026: Prova[] = [
 { nome: "Cerrito", data: "2026-07-26", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Etapa Cerrito.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
 { nome: "Boqueirão / São Lourenço do Sul", data: "2026-09-06", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Grande Final.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
 
+
+// copa rp
+
+// =====================================================
+// MTB — COPA RP 2026
+// =====================================================
+
+{ 
+  nome: "Gravataí", 
+  data: "2026-02-22", 
+  pais: "Brasil", 
+  descricao: "Copa RP MTB - Etapa 1", 
+  modalidade: "mtb", 
+  campeonato: "Copa RP",
+  link: "https://share.google/izgJc7ejhNFjKsG52"
+},
+{ 
+  nome: "Viamão", 
+  data: "2026-04-12", 
+  pais: "Brasil", 
+  descricao: "Copa RP MTB - Etapa 2 (Etapa Rainha - Pontuação Dobrada)", 
+  modalidade: "mtb", 
+  campeonato: "Copa RP" 
+},
+{ 
+  nome: "Osório", 
+  data: "2026-08-16", 
+  pais: "Brasil", 
+  descricao: "Copa RP MTB - Etapa 3", 
+  modalidade: "mtb", 
+  campeonato: "Copa RP" 
+},
+{ 
+  nome: "Picada Café", 
+  data: "2026-11-08", 
+  pais: "Brasil", 
+  descricao: "Copa RP MTB - Etapa 4 (Grande Final)", 
+  modalidade: "mtb", 
+  campeonato: "Copa RP" 
+},
   // =====================================================
   // AVULSAS (fora de circuito)
   // =====================================================

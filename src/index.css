@@ -170,84 +170,76 @@ h2 {
 }
 
 /* ================================
-   CORES POR CAMPEONATO (BORDA)
+   CORES POR CAMPEONATO (BORDA E TEXTO)
 ================================ */
 
-.day.gaucho {
-  border-color: #ef4444;
-}
-.day.gaucho small {
-  color: #ef4444;
-}
+.day.gaucho { border-color: #ef4444; }
+.day.gaucho small { color: #ef4444; }
 
-.day.noroeste {
-  border-color: #3b82f6;
-}
-.day.noroeste small {
-  color: #3b82f6;
-}
+.day.noroeste { border-color: #3b82f6; }
+.day.noroeste small { color: #3b82f6; }
 
-.day.tche {
-  border-color: #8b5cf6;
-}
-.day.tche small {
-  color: #8b5cf6;
-}
+.day.tche { border-color: #8b5cf6; }
+.day.tche small { color: #8b5cf6; }
 
-.day.planalto {
-  border-color: #f97316;
-}
-.day.planalto small {
-  color: #f97316;
-}
+.day.planalto { border-color: #f97316; }
+.day.planalto small { color: #f97316; }
 
-.day.cbc {
-  border-color: #22c55e;
-}
-.day.cbc small {
-  color: #22c55e;
-  font-weight: 600;
-}
+.day.cbc { border-color: #22c55e; }
+.day.cbc small { color: #22c55e; font-weight: 600; }
 
-.day.avulso {
-  border-color: #eab308;
-}
-.day.avulso small {
-  color: #eab308;
-}
+.day.avulso { border-color: #f472b6; }
+.day.avulso small { color: #f472b6; }
+
+.day.centronorte { border-color: #9ca3af; }
+.day.centronorte small { color: #9ca3af; }
+
+.day.zonasul { border-color: #fde047; }
+.day.zonasul small { color: #fde047; }
+
+/* Copa RP - MARROM CLARO */
+.day.coparp { border-color: #d97706; }
+.day.coparp small { color: #d97706; }
 
 /* ================================
-   MÚLTIPLOS CAMPEONATOS NO MESMO DIA
-   → BORDA COM GRADIENTE
+   GRADIENTES (CONFLITOS DE DATAS)
 ================================ */
 
-.day.gaucho.noroeste {
-  border-image: linear-gradient(90deg, #ef4444, #3b82f6) 1;
+/* 22/02: Copa RP + Gaúcho + Noroeste */
+.day.coparp.gaucho.noroeste { 
+  border-image: linear-gradient(90deg, #d97706, #ef4444, #3b82f6) 1; 
 }
 
-.day.gaucho.tche {
-  border-image: linear-gradient(90deg, #ef4444, #8b5cf6) 1;
+/* 12/04: Copa RP + Zona Sul */
+.day.coparp.zonasul { 
+  border-image: linear-gradient(90deg, #d97706, #fde047) 1; 
 }
 
-.day.gaucho.planalto {
-  border-image: linear-gradient(90deg, #ef4444, #f97316) 1;
+/* 16/08 e 08/11: Copa RP + Centro Norte */
+.day.coparp.centronorte { 
+  border-image: linear-gradient(90deg, #d97706, #9ca3af) 1; 
 }
 
-.day.noroeste.tche {
-  border-image: linear-gradient(90deg, #3b82f6, #8b5cf6) 1;
-}
-
-.day.cbc.gaucho {
-  border-image: linear-gradient(90deg, #22c55e, #ef4444) 1;
-}
-
-.day.cbc.planalto {
-  border-image: linear-gradient(90deg, #22c55e, #f97316) 1;
-}
+/* Outros conflitos comuns */
+.day.gaucho.noroeste { border-image: linear-gradient(90deg, #ef4444, #3b82f6) 1; }
+.day.gaucho.tche { border-image: linear-gradient(90deg, #ef4444, #8b5cf6) 1; }
+.day.gaucho.planalto { border-image: linear-gradient(90deg, #ef4444, #f97316) 1; }
+.day.centronorte.gaucho { border-image: linear-gradient(90deg, #9ca3af, #ef4444) 1; }
+.day.zonasul.gaucho { border-image: linear-gradient(90deg, #fde047, #ef4444) 1; }
 
 /* ================================
-   RODAPÉ
+   TABELA E RODAPÉ
 ================================ */
+
+td.gaucho { color: #ef4444; font-weight: 500; }
+td.noroeste { color: #3b82f6; font-weight: 500; }
+td.tche { color: #8b5cf6; font-weight: 500; }
+td.planalto { color: #f97316; font-weight: 500; }
+td.cbc { color: #22c55e; font-weight: 500; }
+td.centronorte { color: #9ca3af; font-weight: 500; }
+td.avulso { color: #f472b6; font-weight: 500; }
+td.zonasul { color: #fde047; font-weight: 500; }
+td.coparp { color: #d97706; font-weight: 500; }
 
 .footer {
   margin-top: 40px;
@@ -258,6 +250,15 @@ h2 {
   border-top: 1px solid #1e293b;
 }
 
+.footer img {
+  margin-top: 5px;
+  filter: grayscale(1);
+  transition: all 0.2s;
+}
+
+.footer img:hover {
+  filter: none;
+}
 
 .modal a {
   color: #38bdf8;
@@ -265,175 +266,13 @@ h2 {
   font-weight: 500;
 }
 
-.modal a:hover {
-  color: #7dd3fc;
-}
-
-
-/* Circuito Centro Norte */
-.day.centronorte {
-  border-color: #9ca3af; /* cinza */
-}
-
-.day.centronorte small {
-  color: #9ca3af;
-}
-
-
-.day.centronorte.gaucho {
-  border-image: linear-gradient(90deg, #9ca3af, #ef4444) 1;
-}
-
-.day.centronorte.noroeste {
-  border-image: linear-gradient(90deg, #9ca3af, #3b82f6) 1;
-}
-
-.day.centronorte.planalto {
-  border-image: linear-gradient(90deg, #9ca3af, #f97316) 1;
-}
-
 /* ================================
-   RESPONSIVO – MOBILE
+   RESPONSIVO
 ================================ */
 @media (max-width: 640px) {
-
-  main {
-    margin: 16px auto;
-    padding: 12px;
-  }
-
-  h1 {
-    font-size: 20px;
-  }
-
-  h2 {
-    font-size: 18px;
-  }
-
-  /* Filtros em coluna */
-  .filters {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .filters input,
-  .filters select,
-  .filter-button {
-    width: 100%;
-  }
-
-  /* Calendário mais compacto */
-  .calendar-grid {
-    gap: 4px;
-  }
-
-  .day {
-    min-height: 60px;
-    padding: 4px;
-  }
-
-  .day span {
-    font-size: 12px;
-  }
-
-  .day small {
-    font-size: 10px;
-    line-height: 1.2;
-  }
-
-  .day-name {
-    font-size: 11px;
-  }
-
-  /* Cabeçalho do mês */
-  .calendar-header h2 {
-    font-size: 16px;
-  }
-
-  .calendar-header button {
-    font-size: 18px;
-  }
-
-  /* Modal ocupa quase a tela toda */
-  .modal,
-  .filter-modal {
-    width: 90%;
-    max-width: none;
-  }
-
-  /* Rodapé */
-  .footer {
-    font-size: 11px;
-    margin-top: 24px;
-  }
-}
-
-/* Campeonato Zona Sul */
-.day.zonasul {
-  border-color: #fde047; /* Amarelo */
-}
-
-.day.zonasul small {
-  color: #fde047;
-}
-
-/* Tabela - cor para a célula do campeonato */
-td.zonasul {
-  color: #fde047;
-  font-weight: 500;
-}
-
-/* Caso coincida com outros campeonatos (Exemplo: Zona Sul + Gaúcho) */
-.day.zonasul.gaucho {
-  border-image: linear-gradient(90deg, #fde047, #ef4444) 1;
-}
-
-.day.zonasul.noroeste {
-  border-image: linear-gradient(90deg, #fde047, #3b82f6) 1;
-}
-
-/* Zona Sul + Outros */
-.day.zonasul.tche {
-  border-image: linear-gradient(90deg, #fde047, #8b5cf6) 1;
-}
-
-.day.zonasul.planalto {
-  border-image: linear-gradient(90deg, #fde047, #f97316) 1;
-}
-
-.day.zonasul.centronorte {
-  border-image: linear-gradient(90deg, #fde047, #9ca3af) 1;
-}
-
-.day.zonasul.cbc {
-  border-image: linear-gradient(90deg, #fde047, #22c55e) 1;
-}
-
-.day.zonasul.avulso {
-  border-image: linear-gradient(90deg, #fde047, #f472b6) 1;
-}
-
-/* Cores dos Textos na Tabela de Eventos */
-td.gaucho { color: #ef4444; font-weight: 500; }
-td.noroeste { color: #3b82f6; font-weight: 500; }
-td.tche { color: #8b5cf6; font-weight: 500; }
-td.planalto { color: #f97316; font-weight: 500; }
-td.cbc { color: #22c55e; font-weight: 500; }
-td.centronorte { color: #9ca3af; font-weight: 500; }
-td.avulso { color: #f472b6; font-weight: 500; } /* Rosa */
-td.zonasul { color: #fde047; font-weight: 500; } /* Amarelo */
-
-.footer a:hover {
-  color: #7dd3fc;
-  transform: scale(1.1);
-  transition: all 0.2s;
-}
-
-.footer img {
-  margin-top: 5px;
-  filter: grayscale(1); /* Deixa o contador em tons de cinza para ser discreto */
-}
-
-.footer img:hover {
-  filter: none; /* Mostra as cores ao passar o mouse */
+  .filters { flex-direction: column; }
+  .calendar-grid { gap: 4px; }
+  .day { min-height: 60px; padding: 4px; }
+  .day span { font-size: 12px; }
+  .day small { font-size: 10px; line-height: 1.2; }
 }
