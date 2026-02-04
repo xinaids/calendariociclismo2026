@@ -10,6 +10,7 @@ export type Campeonato =
   | "Circuito Tchê"
   | "Circuito Planalto Médio"
   | "Circuito Avulso"
+  | "Circuito Centro Norte"
   | "CBC Brasileiro";
 
 
@@ -34,7 +35,7 @@ export const provas2026: Prova[] = [
   // ESTRADA — CAMPEONATO GAÚCHO
   // =====================================================
 
-  { nome: "Campo Bom", data: "2026-01-31", pais: "Brasil", descricao: "Etapa Campo Bom.", modalidade: "estrada", campeonato: "Campeonato Gaúcho" },
+  { nome: "Campo Bom", data: "2026-01-31", pais: "Brasil", descricao: "Etapa Campo Bom. Inscrições em: https://app.sprinta.com.br/e/1-etapa-do-campeonato-gaucho-de-ciclismo_1f4b?utm_source=SPRINTA ", modalidade: "estrada", campeonato: "Campeonato Gaúcho" },
   { nome: "Gramado", data: "2026-02-22", pais: "Brasil", descricao: "Etapa Gramado.", modalidade: "estrada", campeonato: "Campeonato Gaúcho" },
 
   { nome: "Volta de Porto Alegre", data: "2026-03-20", pais: "Brasil", descricao: "Volta de Porto Alegre – Dia 1.", modalidade: "estrada", campeonato: "Campeonato Gaúcho" },
@@ -364,6 +365,68 @@ export const provas2026: Prova[] = [
   { nome: "Local a Definir", data: "2026-05-31", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
 
 
+  // Centro Norte MTB
+
+// =====================================================
+// MTB — CIRCUITO CENTRO NORTE 2026
+// =====================================================
+
+{
+  nome: "Panambi",
+  data: "2026-03-15",
+  pais: "Brasil",
+  descricao: "Circuito Centro Norte MTB – Etapa Panambi (10 anos – Special Edition).",
+  modalidade: "mtb",
+  campeonato: "Circuito Centro Norte",
+},
+{
+  nome: "Cruz Alta",
+  data: "2026-05-03",
+  pais: "Brasil",
+  descricao: "Circuito Centro Norte MTB – Etapa Cruz Alta.",
+  modalidade: "mtb",
+  campeonato: "Circuito Centro Norte",
+},
+{
+  nome: "Faxinal do Soturno",
+  data: "2026-06-07",
+  pais: "Brasil",
+  descricao: "Circuito Centro Norte MTB – Etapa Faxinal do Soturno (Etapa Rainha, Bonificação Extra).",
+  modalidade: "mtb",
+  campeonato: "Circuito Centro Norte",
+},
+{
+  nome: "Ijuí",
+  data: "2026-07-12",
+  pais: "Brasil",
+  descricao: "Circuito Centro Norte MTB – Etapa Ijuí.",
+  modalidade: "mtb",
+  campeonato: "Circuito Centro Norte",
+},
+{
+  nome: "Tupanciretã",
+  data: "2026-08-16",
+  pais: "Brasil",
+  descricao: "Circuito Centro Norte MTB – Etapa Tupanciretã.",
+  modalidade: "mtb",
+  campeonato: "Circuito Centro Norte",
+},
+{
+  nome: "Não-Me-Toque",
+  data: "2026-09-27",
+  pais: "Brasil",
+  descricao: "Circuito Centro Norte MTB – Etapa Não-Me-Toque.",
+  modalidade: "mtb",
+  campeonato: "Circuito Centro Norte",
+},
+{
+  nome: "Quinze de Novembro",
+  data: "2026-11-08",
+  pais: "Brasil",
+  descricao: "Circuito Centro Norte MTB – Final (Bonificação Dobrada).",
+  modalidade: "mtb",
+  campeonato: "Circuito Centro Norte",
+},
 
 
 

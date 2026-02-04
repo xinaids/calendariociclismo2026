@@ -268,3 +268,102 @@ h2 {
 .modal a:hover {
   color: #7dd3fc;
 }
+
+
+/* Circuito Centro Norte */
+.day.centronorte {
+  border-color: #9ca3af; /* cinza */
+}
+
+.day.centronorte small {
+  color: #9ca3af;
+}
+
+
+.day.centronorte.gaucho {
+  border-image: linear-gradient(90deg, #9ca3af, #ef4444) 1;
+}
+
+.day.centronorte.noroeste {
+  border-image: linear-gradient(90deg, #9ca3af, #3b82f6) 1;
+}
+
+.day.centronorte.planalto {
+  border-image: linear-gradient(90deg, #9ca3af, #f97316) 1;
+}
+
+/* ================================
+   RESPONSIVO – MOBILE
+================================ */
+@media (max-width: 640px) {
+
+  main {
+    margin: 16px auto;
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  /* Filtros em coluna */
+  .filters {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .filters input,
+  .filters select,
+  .filter-button {
+    width: 100%;
+  }
+
+  /* Calendário mais compacto */
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .day {
+    min-height: 60px;
+    padding: 4px;
+  }
+
+  .day span {
+    font-size: 12px;
+  }
+
+  .day small {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .day-name {
+    font-size: 11px;
+  }
+
+  /* Cabeçalho do mês */
+  .calendar-header h2 {
+    font-size: 16px;
+  }
+
+  .calendar-header button {
+    font-size: 18px;
+  }
+
+  /* Modal ocupa quase a tela toda */
+  .modal,
+  .filter-modal {
+    width: 90%;
+    max-width: none;
+  }
+
+  /* Rodapé */
+  .footer {
+    font-size: 11px;
+    margin-top: 24px;
+  }
+}

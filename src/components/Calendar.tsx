@@ -26,6 +26,8 @@ function getClasseCampeonato(c: Campeonato): string {
       return "cbc";
     case "Circuito Avulso":
       return "avulso";
+    case "Circuito Centro Norte":
+       return "centronorte";
     default:
       return "";
   }
@@ -41,9 +43,11 @@ const CAMPEONATOS: Campeonato[] = [
   "Campeonato Noroeste",
   "Circuito Tchê",
   "Circuito Planalto Médio",
+  "Circuito Centro Norte",
   "CBC Brasileiro",
   "Circuito Avulso",
 ];
+
 
 export function Calendar() {
   const [mesAtual, setMesAtual] = useState(() => new Date().getMonth());
