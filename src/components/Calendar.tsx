@@ -28,6 +28,8 @@ function getClasseCampeonato(c: Campeonato): string {
       return "avulso";
     case "Circuito Centro Norte":
        return "centronorte";
+    case "Campeonato Zona Sul":
+      return "zonasul";   
     default:
       return "";
   }
@@ -45,26 +47,22 @@ const CAMPEONATOS: Campeonato[] = [
   "Circuito Planalto Médio",
   "Circuito Centro Norte",
   "CBC Brasileiro",
+  "Campeonato Zona Sul",
   "Circuito Avulso",
 ];
-
 
 export function Calendar() {
   const [mesAtual, setMesAtual] = useState(() => new Date().getMonth());
   const [selecionadas, setSelecionadas] = useState<Prova[] | null>(null);
   const [modalidade, setModalidade] = useState<Modalidade | "todas">("todas");
   const [busca, setBusca] = useState("");
-  const [campeonatosSelecionados, setCampeonatosSelecionados] =
-    useState<Campeonato[]>([]);
+  const [campeonatosSelecionados, setCampeonatosSelecionados] = useState<Campeonato[]>([]);
   const [menuAberto, setMenuAberto] = useState(false);
 
   const ano = 2026;
 
-  const primeiroDia =
-    (new Date(ano, mesAtual, 1).getDay() + 6) % 7;
-
-  const diasNoMes =
-    new Date(ano, mesAtual + 1, 0).getDate();
+  const primeiroDia = (new Date(ano, mesAtual, 1).getDay() + 6) % 7;
+  const diasNoMes = new Date(ano, mesAtual + 1, 0).getDate();
 
   const provasFiltradas = provas2026.filter((p) => {
     const data = parseLocalDate(p.data);
@@ -84,7 +82,7 @@ export function Calendar() {
 
   return (
     <>
-      {/* FILTROS */}
+      {/* FILTROS SUPERIORES */}
       <div className="filters">
         <input
           type="text"
@@ -107,14 +105,14 @@ export function Calendar() {
         </button>
       </div>
 
-      {/* CABEÇALHO */}
+      {/* CABEÇALHO DO MÊS */}
       <header className="calendar-header">
         <button onClick={() => setMesAtual(m => Math.max(0, m - 1))}>◀</button>
         <h2>{meses[mesAtual]} 2026</h2>
         <button onClick={() => setMesAtual(m => Math.min(11, m + 1))}>▶</button>
       </header>
 
-      {/* CALENDÁRIO */}
+      {/* GRID DO CALENDÁRIO */}
       <div className="calendar-grid">
         {["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"].map((d) => (
           <div key={d} className="day-name">{d}</div>
@@ -144,7 +142,7 @@ export function Calendar() {
         })}
       </div>
 
-      {/* LISTA DO MÊS (TABELA) */}
+      {/* TABELA DE EVENTOS DO MÊS */}
       <div className="month-events">
         <h3>Eventos de {meses[mesAtual]}</h3>
 
@@ -192,8 +190,54 @@ export function Calendar() {
         </table>
       </div>
 
+      {/* MODAL DE DETALHES DO DIA */}
       {selecionadas && (
         <Modal provas={selecionadas} onClose={() => setSelecionadas(null)} />
+      )}
+
+      {/* MODAL DE SELEÇÃO DE CAMPEONATOS */}
+      {menuAberto && (
+        <div className="filter-modal-backdrop" onClick={() => setMenuAberto(false)}>
+          <div className="filter-modal" onClick={(e) => e.stopPropagation()}>
+            <h3>Filtrar por Campeonato</h3>
+            <div className="filter-list" style={{ margin: "15px 0", display: "flex", flexDirection: "column", gap: "10px" }}>
+              {CAMPEONATOS.map((camp) => (
+                <label key={camp} className="filter-option" style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer" }}>
+                  <input
+                    type="checkbox"
+                    checked={campeonatosSelecionados.includes(camp)}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setCampeonatosSelecionados([...campeonatosSelecionados, camp]);
+                      } else {
+                        setCampeonatosSelecionados(
+                          campeonatosSelecionados.filter((c) => c !== camp)
+                        );
+                      }
+                    }}
+                  />
+                  <span className={getClasseCampeonato(camp)} style={{ fontWeight: 500 }}>
+                    {camp}
+                  </span>
+                </label>
+              ))}
+            </div>
+            <div className="filter-actions" style={{ display: "flex", justifyContent: "space-between", marginTop: "20px" }}>
+              <button 
+                className="secondary" 
+                onClick={() => setCampeonatosSelecionados([])}
+              >
+                Limpar
+              </button>
+              <button 
+                className="primary" 
+                onClick={() => setMenuAberto(false)}
+              >
+                Fechar
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );

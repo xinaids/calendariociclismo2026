@@ -367,3 +367,73 @@ h2 {
     margin-top: 24px;
   }
 }
+
+/* Campeonato Zona Sul */
+.day.zonasul {
+  border-color: #fde047; /* Amarelo */
+}
+
+.day.zonasul small {
+  color: #fde047;
+}
+
+/* Tabela - cor para a célula do campeonato */
+td.zonasul {
+  color: #fde047;
+  font-weight: 500;
+}
+
+/* Caso coincida com outros campeonatos (Exemplo: Zona Sul + Gaúcho) */
+.day.zonasul.gaucho {
+  border-image: linear-gradient(90deg, #fde047, #ef4444) 1;
+}
+
+.day.zonasul.noroeste {
+  border-image: linear-gradient(90deg, #fde047, #3b82f6) 1;
+}
+
+/* Zona Sul + Outros */
+.day.zonasul.tche {
+  border-image: linear-gradient(90deg, #fde047, #8b5cf6) 1;
+}
+
+.day.zonasul.planalto {
+  border-image: linear-gradient(90deg, #fde047, #f97316) 1;
+}
+
+.day.zonasul.centronorte {
+  border-image: linear-gradient(90deg, #fde047, #9ca3af) 1;
+}
+
+.day.zonasul.cbc {
+  border-image: linear-gradient(90deg, #fde047, #22c55e) 1;
+}
+
+.day.zonasul.avulso {
+  border-image: linear-gradient(90deg, #fde047, #f472b6) 1;
+}
+
+/* Cores dos Textos na Tabela de Eventos */
+td.gaucho { color: #ef4444; font-weight: 500; }
+td.noroeste { color: #3b82f6; font-weight: 500; }
+td.tche { color: #8b5cf6; font-weight: 500; }
+td.planalto { color: #f97316; font-weight: 500; }
+td.cbc { color: #22c55e; font-weight: 500; }
+td.centronorte { color: #9ca3af; font-weight: 500; }
+td.avulso { color: #f472b6; font-weight: 500; } /* Rosa */
+td.zonasul { color: #fde047; font-weight: 500; } /* Amarelo */
+
+.footer a:hover {
+  color: #7dd3fc;
+  transform: scale(1.1);
+  transition: all 0.2s;
+}
+
+.footer img {
+  margin-top: 5px;
+  filter: grayscale(1); /* Deixa o contador em tons de cinza para ser discreto */
+}
+
+.footer img:hover {
+  filter: none; /* Mostra as cores ao passar o mouse */
+}

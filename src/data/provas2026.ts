@@ -11,7 +11,8 @@ export type Campeonato =
   | "Circuito Planalto Médio"
   | "Circuito Avulso"
   | "Circuito Centro Norte"
-  | "CBC Brasileiro";
+  | "CBC Brasileiro"
+  | "Campeonato Zona Sul"; // 👈 ADICIONE ESTA LINHA
 
 
 
@@ -57,78 +58,15 @@ export const provas2026: Prova[] = [
   { nome: "GP Tarumã", data: "2026-11-21", pais: "Brasil", descricao: "GP Tarumã – Dia 2.", modalidade: "estrada", campeonato: "Campeonato Gaúcho" },
   { nome: "GP Tarumã", data: "2026-11-22", pais: "Brasil", descricao: "GP Tarumã – Dia 3.", modalidade: "estrada", campeonato: "Campeonato Gaúcho" },
 
-
-    // =====================================================
-  // MTB — CAMPEONATO GAÚCHO 2026
-  // =====================================================
-
-  // ---------- XCM ----------
-  {
-    nome: "Barra do Ribeiro – XCM",
-    data: "2026-03-15",
-    pais: "Brasil",
-    descricao: "Campeonato Gaúcho MTB XCM – 1ª Etapa (Barra do Ribeiro).",
-    modalidade: "mtb",
-    campeonato: "Campeonato Gaúcho",
-  },
-  {
-    nome: "Nova Petrópolis – XCM",
-    data: "2026-04-26",
-    pais: "Brasil",
-    descricao: "Campeonato Gaúcho MTB XCM – 2ª Etapa (Ranking Nacional).",
-    modalidade: "mtb",
-    campeonato: "Campeonato Gaúcho",
-  },
-  {
-    nome: "Garibaldi – XCM",
-    data: "2026-10-18",
-    pais: "Brasil",
-    descricao: "Campeonato Gaúcho MTB XCM – 3ª Etapa (Garibaldi).",
-    modalidade: "mtb",
-    campeonato: "Campeonato Gaúcho",
-  },
-  {
-    nome: "São Sebastião do Caí – XCM",
-    data: "2026-11-01",
-    pais: "Brasil",
-    descricao: "Campeonato Gaúcho MTB XCM – 4ª Etapa (Etapa Única).",
-    modalidade: "mtb",
-    campeonato: "Campeonato Gaúcho",
-  },
-
-  // ---------- XCO ----------
-  {
-    nome: "Monte Alverne – XCO",
-    data: "2026-05-03",
-    pais: "Brasil",
-    descricao: "Campeonato Gaúcho MTB XCO – 1ª Etapa (Monte Alverne).",
-    modalidade: "mtb",
-    campeonato: "Campeonato Gaúcho",
-  },
-  {
-    nome: "Campo Bom – XCO",
-    data: "2026-07-05",
-    pais: "Brasil",
-    descricao: "Campeonato Gaúcho MTB XCO – 2ª Etapa (Campo Bom).",
-    modalidade: "mtb",
-    campeonato: "Campeonato Gaúcho",
-  },
-  {
-    nome: "Três Coroas – XCO",
-    data: "2026-09-27",
-    pais: "Brasil",
-    descricao: "Campeonato Gaúcho MTB XCO – 3ª Etapa (Ranking Nacional).",
-    modalidade: "mtb",
-    campeonato: "Campeonato Gaúcho",
-  },
-  {
-    nome: "Porto Alegre – XCO",
-    data: "2026-11-29",
-    pais: "Brasil",
-    descricao: "Campeonato Gaúcho MTB XCO – 4ª Etapa (Etapa Única).",
-    modalidade: "mtb",
-    campeonato: "Campeonato Gaúcho",
-  },
+// Campeonato Gaúcho MTB XCM e XCO
+{ nome: "Barra do Ribeiro – XCM", data: "2026-03-15", pais: "Brasil", descricao: "Campeonato Gaúcho MTB XCM – 1ª Etapa (Barra do Ribeiro).", modalidade: "mtb", campeonato: "Campeonato Gaúcho" },
+{ nome: "Nova Petrópolis – XCM", data: "2026-04-26", pais: "Brasil", descricao: "Campeonato Gaúcho MTB XCM – 2ª Etapa (Ranking Nacional).", modalidade: "mtb", campeonato: "Campeonato Gaúcho" },
+{ nome: "Garibaldi – XCM", data: "2026-10-18", pais: "Brasil", descricao: "Campeonato Gaúcho MTB XCM – 3ª Etapa (Garibaldi).", modalidade: "mtb", campeonato: "Campeonato Gaúcho" },
+{ nome: "São Sebastião do Caí – XCM", data: "2026-11-01", pais: "Brasil", descricao: "Campeonato Gaúcho MTB XCM – 4ª Etapa (Etapa Única).", modalidade: "mtb", campeonato: "Campeonato Gaúcho" },
+{ nome: "Monte Alverne – XCO", data: "2026-05-03", pais: "Brasil", descricao: "Campeonato Gaúcho MTB XCO – 1ª Etapa (Monte Alverne).", modalidade: "mtb", campeonato: "Campeonato Gaúcho" },
+{ nome: "Campo Bom – XCO", data: "2026-07-05", pais: "Brasil", descricao: "Campeonato Gaúcho MTB XCO – 2ª Etapa (Campo Bom).", modalidade: "mtb", campeonato: "Campeonato Gaúcho" },
+{ nome: "Três Coroas – XCO", data: "2026-09-27", pais: "Brasil", descricao: "Campeonato Gaúcho MTB XCO – 3ª Etapa (Ranking Nacional).", modalidade: "mtb", campeonato: "Campeonato Gaúcho" },
+{ nome: "Porto Alegre – XCO", data: "2026-11-29", pais: "Brasil", descricao: "Campeonato Gaúcho MTB XCO – 4ª Etapa (Etapa Única).", modalidade: "mtb", campeonato: "Campeonato Gaúcho" },
 
   
 
@@ -139,7 +77,7 @@ export const provas2026: Prova[] = [
   { nome: "Cruz Alta", data: "2026-03-01", pais: "Brasil", descricao: "Etapa Cruz Alta.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
   { nome: "Carazinho", data: "2026-03-29", pais: "Brasil", descricao: "Etapa Carazinho.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
   { nome: "Ijuí", data: "2026-05-03", pais: "Brasil", descricao: "Etapa Ijuí.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
-  { nome: "Panambi", data: "2026-08-23", pais: "Brasil", descricao: "Etapa Panambi.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
+  { nome: "Panambi", data: "2026-08-23", pais: "Brasil", descricao: "Etapa Panambi.", modalidade: "estrada", campeonato: "Campeonato Noroeste", },
   { nome: "Boa Vista do Incra", data: "2026-09-27", pais: "Brasil", descricao: "Etapa Boa Vista do Incra.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
   { nome: "Três Passos", data: "2026-10-18", pais: "Brasil", descricao: "Etapa Três Passos.", modalidade: "estrada", campeonato: "Campeonato Noroeste" },
 
@@ -167,195 +105,41 @@ export const provas2026: Prova[] = [
   { nome: "Passo Fundo", data: "2026-11-01", pais: "Brasil", descricao: "Etapa Passo Fundo – Circuito Planalto Médio MTB.", modalidade: "mtb", campeonato: "Circuito Planalto Médio" },
 
 
-    // =====================================================
+// =====================================================
   // ESTRADA — CBC BRASILEIRO (CALENDÁRIO NACIONAL) 2026
   // =====================================================
 
-  // Campeonato Brasileiro de Estrada e CRI – Categorias de Base
-  {
-    nome: "Brasileiro de Estrada e CRI – Categorias de Base",
-    data: "2026-04-07",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Categorias de Base (Dia 1).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada e CRI – Categorias de Base",
-    data: "2026-04-08",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Categorias de Base (Dia 2).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada e CRI – Categorias de Base",
-    data: "2026-04-09",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Categorias de Base (Dia 3).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada e CRI – Categorias de Base",
-    data: "2026-04-10",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Categorias de Base (Dia 4).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada e CRI – Categorias de Base",
-    data: "2026-04-11",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Categorias de Base (Dia 5).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada e CRI – Categorias de Base",
-    data: "2026-04-12",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Categorias de Base (Dia 6).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
+  // Brasileiro de Estrada e CRI – Categorias de Base
+  { nome: "Brasileiro de Estrada e CRI – Base", data: "2026-04-07", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 1)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada e CRI – Base", data: "2026-04-08", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 2)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada e CRI – Base", data: "2026-04-09", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 3)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada e CRI – Base", data: "2026-04-10", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 4)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada e CRI – Base", data: "2026-04-11", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 5)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada e CRI – Base", data: "2026-04-12", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 6)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
 
-  // Campeonato Brasileiro de Estrada e CRI – Elite / Sub23
-  {
-    nome: "Brasileiro de Estrada e CRI – Elite/Sub23",
-    data: "2026-06-26",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Elite/Sub23 (Dia 1).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada e CRI – Elite/Sub23",
-    data: "2026-06-27",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Elite/Sub23 (Dia 2).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada e CRI – Elite/Sub23",
-    data: "2026-06-28",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Elite/Sub23 (Dia 3).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
+  // Brasileiro de Estrada e CRI – Elite / Sub23
+  { nome: "Brasileiro de Estrada – Elite/Sub23", data: "2026-06-26", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 1)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada – Elite/Sub23", data: "2026-06-27", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 2)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada – Elite/Sub23", data: "2026-06-28", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 3)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
 
   // Tour do Rio – UCI 2.2
-  {
-    nome: "Tour do Rio",
-    data: "2026-07-29",
-    pais: "Brasil",
-    descricao: "Tour do Rio – UCI 2.2 (Dia 1).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Tour do Rio",
-    data: "2026-07-30",
-    pais: "Brasil",
-    descricao: "Tour do Rio – UCI 2.2 (Dia 2).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Tour do Rio",
-    data: "2026-07-31",
-    pais: "Brasil",
-    descricao: "Tour do Rio – UCI 2.2 (Dia 3).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Tour do Rio",
-    data: "2026-08-01",
-    pais: "Brasil",
-    descricao: "Tour do Rio – UCI 2.2 (Dia 4).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Tour do Rio",
-    data: "2026-08-02",
-    pais: "Brasil",
-    descricao: "Tour do Rio – UCI 2.2 (Dia 5).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
+  { nome: "Tour do Rio", data: "2026-07-29", pais: "Brasil", descricao: "UCI 2.2 (Dia 1)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Tour do Rio", data: "2026-07-30", pais: "Brasil", descricao: "UCI 2.2 (Dia 2)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Tour do Rio", data: "2026-07-31", pais: "Brasil", descricao: "UCI 2.2 (Dia 3)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Tour do Rio", data: "2026-08-01", pais: "Brasil", descricao: "UCI 2.2 (Dia 4)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Tour do Rio", data: "2026-08-02", pais: "Brasil", descricao: "UCI 2.2 (Dia 5)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
 
-  // Campeonato Brasileiro – Masters / Sub30
-  {
-    nome: "Brasileiro de Estrada – Masters/Sub30",
-    data: "2026-09-18",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Masters/Sub30 (Dia 1).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada – Masters/Sub30",
-    data: "2026-09-19",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Masters/Sub30 (Dia 2).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Brasileiro de Estrada – Masters/Sub30",
-    data: "2026-09-20",
-    pais: "Brasil",
-    descricao: "Campeonato Brasileiro – Masters/Sub30 (Dia 3).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
+  // Brasileiro de Estrada – Masters / Sub30
+  { nome: "Brasileiro de Estrada – Masters/Sub30", data: "2026-09-18", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 1)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada – Masters/Sub30", data: "2026-09-19", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 2)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Brasileiro de Estrada – Masters/Sub30", data: "2026-09-20", pais: "Brasil", descricao: "Campeonato Brasileiro (Dia 3)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
 
   // Volta Ciclística de Santa Catarina – UCI 2.2
-  {
-    nome: "Volta Ciclística de Santa Catarina",
-    data: "2026-10-07",
-    pais: "Brasil",
-    descricao: "Volta de SC – UCI 2.2 (Dia 1).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Volta Ciclística de Santa Catarina",
-    data: "2026-10-08",
-    pais: "Brasil",
-    descricao: "Volta de SC – UCI 2.2 (Dia 2).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Volta Ciclística de Santa Catarina",
-    data: "2026-10-09",
-    pais: "Brasil",
-    descricao: "Volta de SC – UCI 2.2 (Dia 3).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Volta Ciclística de Santa Catarina",
-    data: "2026-10-10",
-    pais: "Brasil",
-    descricao: "Volta de SC – UCI 2.2 (Dia 4).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
-  {
-    nome: "Volta Ciclística de Santa Catarina",
-    data: "2026-10-11",
-    pais: "Brasil",
-    descricao: "Volta de SC – UCI 2.2 (Dia 5).",
-    modalidade: "estrada",
-    campeonato: "CBC Brasileiro",
-  },
+  { nome: "Volta Ciclística de Santa Catarina", data: "2026-10-07", pais: "Brasil", descricao: "UCI 2.2 (Dia 1)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Volta Ciclística de Santa Catarina", data: "2026-10-08", pais: "Brasil", descricao: "UCI 2.2 (Dia 2)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Volta Ciclística de Santa Catarina", data: "2026-10-09", pais: "Brasil", descricao: "UCI 2.2 (Dia 3)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Volta Ciclística de Santa Catarina", data: "2026-10-10", pais: "Brasil", descricao: "UCI 2.2 (Dia 4)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
+  { nome: "Volta Ciclística de Santa Catarina", data: "2026-10-11", pais: "Brasil", descricao: "UCI 2.2 (Dia 5)", modalidade: "estrada", campeonato: "CBC Brasileiro" },
 
   // Campeonato Noroeste MTB
 
@@ -365,70 +149,28 @@ export const provas2026: Prova[] = [
   { nome: "Local a Definir", data: "2026-05-31", pais: "Brasil", descricao: "XCM", modalidade: "mtb", campeonato: "Campeonato Noroeste" },
 
 
-  // Centro Norte MTB
-
 // =====================================================
 // MTB — CIRCUITO CENTRO NORTE 2026
 // =====================================================
 
-{
-  nome: "Panambi",
-  data: "2026-03-15",
-  pais: "Brasil",
-  descricao: "Circuito Centro Norte MTB – Etapa Panambi (10 anos – Special Edition).",
-  modalidade: "mtb",
-  campeonato: "Circuito Centro Norte",
-},
-{
-  nome: "Cruz Alta",
-  data: "2026-05-03",
-  pais: "Brasil",
-  descricao: "Circuito Centro Norte MTB – Etapa Cruz Alta.",
-  modalidade: "mtb",
-  campeonato: "Circuito Centro Norte",
-},
-{
-  nome: "Faxinal do Soturno",
-  data: "2026-06-07",
-  pais: "Brasil",
-  descricao: "Circuito Centro Norte MTB – Etapa Faxinal do Soturno (Etapa Rainha, Bonificação Extra).",
-  modalidade: "mtb",
-  campeonato: "Circuito Centro Norte",
-},
-{
-  nome: "Ijuí",
-  data: "2026-07-12",
-  pais: "Brasil",
-  descricao: "Circuito Centro Norte MTB – Etapa Ijuí.",
-  modalidade: "mtb",
-  campeonato: "Circuito Centro Norte",
-},
-{
-  nome: "Tupanciretã",
-  data: "2026-08-16",
-  pais: "Brasil",
-  descricao: "Circuito Centro Norte MTB – Etapa Tupanciretã.",
-  modalidade: "mtb",
-  campeonato: "Circuito Centro Norte",
-},
-{
-  nome: "Não-Me-Toque",
-  data: "2026-09-27",
-  pais: "Brasil",
-  descricao: "Circuito Centro Norte MTB – Etapa Não-Me-Toque.",
-  modalidade: "mtb",
-  campeonato: "Circuito Centro Norte",
-},
-{
-  nome: "Quinze de Novembro",
-  data: "2026-11-08",
-  pais: "Brasil",
-  descricao: "Circuito Centro Norte MTB – Final (Bonificação Dobrada).",
-  modalidade: "mtb",
-  campeonato: "Circuito Centro Norte",
-},
+{ nome: "Panambi", data: "2026-03-15", pais: "Brasil", descricao: "Etapa Panambi (10 anos – Special Edition)", modalidade: "mtb", campeonato: "Circuito Centro Norte", link: "https://windfit.app/events/panambi2026" },
+{ nome: "Cruz Alta", data: "2026-05-03", pais: "Brasil", descricao: "Etapa Cruz Alta", modalidade: "mtb", campeonato: "Circuito Centro Norte" },
+{ nome: "Faxinal do Soturno", data: "2026-06-07", pais: "Brasil", descricao: "Etapa Rainha (Bonificação Extra)", modalidade: "mtb", campeonato: "Circuito Centro Norte" },
+{ nome: "Ijuí", data: "2026-07-12", pais: "Brasil", descricao: "Etapa Ijuí", modalidade: "mtb", campeonato: "Circuito Centro Norte" },
+{ nome: "Tupanciretã", data: "2026-08-16", pais: "Brasil", descricao: "Etapa Tupanciretã", modalidade: "mtb", campeonato: "Circuito Centro Norte" },
+{ nome: "Não-Me-Toque", data: "2026-09-27", pais: "Brasil", descricao: "Etapa Não-Me-Toque", modalidade: "mtb", campeonato: "Circuito Centro Norte" },
+{ nome: "Quinze de Novembro", data: "2026-11-08", pais: "Brasil", descricao: "Final (Bonificação Dobrada)", modalidade: "mtb", campeonato: "Circuito Centro Norte" },
 
 
+// campeonato zona sul
+
+{ nome: "Cristal", data: "2026-02-01", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Etapa Cristal.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
+{ nome: "Arambaré", data: "2026-03-08", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Etapa Arambaré.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
+{ nome: "Dom Feliciano", data: "2026-04-12", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Etapa Dom Feliciano.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
+{ nome: "Arroio do Padre", data: "2026-05-17", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Etapa Arroio do Padre.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
+{ nome: "Pelotas", data: "2026-06-21", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Etapa Pelotas.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
+{ nome: "Cerrito", data: "2026-07-26", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Etapa Cerrito.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
+{ nome: "Boqueirão / São Lourenço do Sul", data: "2026-09-06", pais: "Brasil", descricao: "Campeonato Zona Sul MTB – Grande Final.", modalidade: "mtb", campeonato: "Campeonato Zona Sul" },
 
   // =====================================================
   // AVULSAS (fora de circuito)
