@@ -213,6 +213,10 @@ export const provas2026: Prova[] = [
   modalidade: "mtb", 
   campeonato: "Copa RP" 
 },
+
+{ nome: "DM Reis", data: "2026-03-07", pais: "Brasil", descricao: "DM Reis.", modalidade: "estrada", campeonato: "Circuito Avulso", link: "https://docs.google.com/forms/d/e/1FAIpQLSdVIIUNuqyMw_LqYoZYEvQNIh7pX11oHqaSXnw8Y-mtd44iaQ/viewform?fbclid=PAb21jcAP27bBleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaei-_GqL7lSZYa4QjT4DZ4UGVcS0S0r9rH2pkLmkzP9rQ9Av6KmU_Wg-gg4uQ_aem_lToCcSqjeBXGWvYqjLl_aQ&utm_source=ig&utm_medium=social&utm_content=link_in_bio" },
+{ nome: "Cambará do Sul", data: "2026-04-26", pais: "Brasil", descricao: "Cambará do Sul", modalidade: "estrada", campeonato: "Circuito Avulso"},
+
   // =====================================================
   // AVULSAS (fora de circuito)
   // =====================================================
